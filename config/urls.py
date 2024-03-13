@@ -23,5 +23,5 @@ urlpatterns = [
     path('api/', api.urls),
 ]
 
-# Set the custom 404 handler
+# 404 handler
 handler404 = 'btc_wallet.views.notfound_handler'
