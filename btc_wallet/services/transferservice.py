@@ -51,9 +51,6 @@ class TransferService:
 
         return "Transfer successful."
 
-
-
-
     @staticmethod
     def add_balance(amount_eur):
         exchange_rate = TransferService.get_btc_exchange_rate()

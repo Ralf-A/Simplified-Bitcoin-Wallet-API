@@ -17,11 +17,11 @@ class TransactionOut(Schema):
     spent: bool
     created_at: datetime
 
-    class Config:
-        json_encoders = {
-            UUID: lambda v: str(v),
-            datetime: lambda v: v.isoformat(),
-        }
+class Config:
+    json_encoders = {
+        UUID: lambda v: str(v),
+        datetime: lambda v: v.isoformat(),
+    }
 
 
 class BalanceOut(Schema):
