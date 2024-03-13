@@ -22,8 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-y5dceabgqm$a4(l=n9w*5o$tev@=-w1dl!cewdvm5m(5r^po@='
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#### Turn DEBUG Mode on to True to test with /api/docs
+#### Otherwise default to False in production
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '']
 
