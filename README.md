@@ -1,10 +1,9 @@
 # Simplified-Bitcoin-Wallet-API
 
-### Additional Information
 # Starting the API
-## 1. Using Docker(recommended)
+### 1. Using Docker(recommended)
 
-## 2. From command line 
+### 2. From command line 
 ### 1. Initialize environment scripts
 `myenv\Scripts\activate`
 ### 2. Initialize database and migrate if needed
@@ -16,7 +15,7 @@
 `python manage.py test btc_wallet.tests`
 
 
-## API Documentation
+# API Documentation
 
 - Default port 8000
 - Documentation/usage also can be found on /api/docs
