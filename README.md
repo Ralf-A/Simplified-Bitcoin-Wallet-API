@@ -95,7 +95,3 @@ Run docker-compose.yml and see the API working in harmony on port 8000!
   - Responses:
     - `201 Created`: Balance was successfully added.
 
-
-- **AddBalanceIn**
-  - `amount_eur`: Number or String
-
