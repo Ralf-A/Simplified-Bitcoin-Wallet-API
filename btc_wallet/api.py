@@ -1,3 +1,6 @@
+from datetime import datetime
+from uuid import UUID
+
 from ninja import NinjaAPI, Schema
 from typing import List
 from django.shortcuts import get_object_or_404
@@ -8,10 +11,16 @@ from decimal import Decimal
 api = NinjaAPI()
 
 class TransactionOut(Schema):
-    transaction_id: str
+    transaction_id: UUID
     amount: Decimal
     spent: bool
-    created_at: str
+    created_at: datetime
+
+    class Config:
+        json_encoders = {
+            UUID: lambda v: str(v),
+            datetime: lambda v: v.isoformat(),
+        }
 
 class BalanceOut(Schema):
     balance_btc: Decimal
