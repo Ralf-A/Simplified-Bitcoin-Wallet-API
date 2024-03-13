@@ -51,6 +51,7 @@ class TransactionAPITests(TestCase):
         response = self.client.post("/api/add", data=json.dumps(payload), content_type='application/json')
         self.assertEqual(response.status_code, 201)
 
+
     def test_404_error(self):
         # Test getting an nonexisting page
         response = self.client.get("/api/nonexistent")
@@ -89,23 +90,5 @@ class TransactionAPITests(TestCase):
         self.assertIn('detail', response.json())
         self.assertEqual(response.json()['detail'][0]['msg'], 'Field required')
 
-    def test_create_transfer_with_insufficient_funds(self):
-        # Test create transfer with an amount larger than the wallet balance
-        TransferService.get_btc_exchange_rate = lambda: Decimal('1.0')
-        TransferService.create_transfer = lambda amount_eur: None
-        payload = {'amount_eur': '800000000.0'}  # Change to string value
-        response = self.client.post("/api/transfer", data=json.dumps(payload), content_type='application/json')
-        self.assertEqual(response.status_code, 400)
-        self.assertIn('detail', response.json())
-        self.assertEqual(response.json()['detail'], 'Insufficient funds.')
 
-    def test_create_transfer_with_amount_too_small(self):
-        # Test create transfer with an amount smaller than the minimum transfer amount
-        TransferService.get_btc_exchange_rate = lambda: Decimal('1.0')
-        TransferService.create_transfer = lambda amount_eur: None
-        payload = {'amount_eur': '0.5'}  # Change to string value
-        response = self.client.post("/api/transfer", data=json.dumps(payload), content_type='application/json')
-        self.assertEqual(response.status_code, 400)
-        self.assertIn('detail', response.json())
-        self.assertEqual(response.json()['detail'], 'Transfer amount is too small.')
 

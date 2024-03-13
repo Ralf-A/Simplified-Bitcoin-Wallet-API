@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-y5dceabgqm$a4(l=n9w*5o$tev@=-w1dl!cewdvm5m(5r^po@=
 
 #### Turn DEBUG Mode on to True to test with /api/docs
 #### Otherwise default to False in production
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '']
 
