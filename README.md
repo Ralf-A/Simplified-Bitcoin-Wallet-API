@@ -14,6 +14,7 @@ Run docker-compose.yml and see the API working in harmony on port 8000!
 `myenv\Scripts\activate`
 ### 2. Initialize database and migrate if needed
 `python manage.py makemigrations`
+
 `python manage.py migrate`
 ### 3. Run the server
 `python manage.py runserver`
