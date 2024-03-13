@@ -6,13 +6,15 @@ Endpoints to view transactions, view balance, add balance, transfer balance.
 Features a range of tests.
 
 # Starting the API
-### 1. Using Docker(recommended)
+## 1. Using Docker (recommended)
+Run docker-compose.yml and see the API working in harmony on port 8000!
 
-### 2. From command line 
+## 2. From command line 
 ### 1. Initialize environment scripts
 `myenv\Scripts\activate`
 ### 2. Initialize database and migrate if needed
 `python manage.py makemigrations`
+
 `python manage.py migrate`
 ### 3. Run the server
 `python manage.py runserver`
@@ -92,8 +94,4 @@ Features a range of tests.
       ```
   - Responses:
     - `201 Created`: Balance was successfully added.
-
-
-- **AddBalanceIn**
-  - `amount_eur`: Number or String
 
