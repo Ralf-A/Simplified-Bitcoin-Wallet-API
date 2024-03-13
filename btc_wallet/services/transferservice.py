@@ -1,7 +1,7 @@
 import requests
 from decimal import Decimal, ROUND_DOWN
 
-from btc_wallet.models import Transaction
+from btc_wallet.models.models import Transaction
 
 
 class TransferService:

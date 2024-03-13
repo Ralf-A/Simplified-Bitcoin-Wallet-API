@@ -1,13 +1,12 @@
 from datetime import datetime
 from uuid import UUID
 
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse
 from ninja import NinjaAPI, Schema
 from typing import List
-from django.shortcuts import get_object_or_404
-from .models import Transaction
-from .transferservice import TransferService
-from decimal import Decimal, ROUND_DOWN
+from btc_wallet.models.models import Transaction
+from btc_wallet.services.transferservice import TransferService
+from decimal import Decimal
 
 api = NinjaAPI()
 

@@ -1,9 +1,7 @@
 from django.http import JsonResponse
 
+handler404 = 'notfound_handler'
 def notfound_handler(request, exception):
-    """
-    Custom 404 handler to return JSON response for Not Found errors.
-    """
     return JsonResponse(
         {
             "error": "Page not found",
