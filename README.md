@@ -7,7 +7,7 @@ Features a range of tests.
 
 # Starting the API
 ## 1. Using Docker (recommended)
-### Run docker-compose.yml and see the API working in harmony on port 8000!
+Run docker-compose.yml and see the API working in harmony on port 8000!
 
 ## 2. From command line 
 ### 1. Initialize environment scripts
