@@ -1,4 +1,9 @@
 # Simplified-Bitcoin-Wallet-API
+## Description
+
+A simple Bitcoin Wallet REST API based on a simplified Bitcoin transaction model using Django NinjaAPI and sqlite3.
+Endpoints to view transactions, view balance, add balance, transfer balance.
+Features a range of tests.
 
 # Starting the API
 ### 1. Using Docker(recommended)
@@ -22,7 +27,7 @@
   
 #### Transactions
 
-- **GET /transactions**
+- **GET /api/transactions**
   - Description: Retrieves a list of all transactions.
   - Parameters: None
   - Responses:
@@ -42,7 +47,7 @@
 
 #### Balance
 
-- **GET /balance**
+- **GET /api/balance**
   - Description: Displays the current balance in BTC and EUR.
   - Parameters: None
   - Responses:
@@ -58,7 +63,7 @@
 
 #### Transfer
 
-- **POST /transfer**
+- **POST /api/transfer**
   - Description: Initiates a transfer of funds.
   - Parameters: None
   - Request Body:
@@ -74,7 +79,7 @@
 
 #### Add Balance
 
-- **POST /add**
+- **POST /api/add**
   - Description: Adds balance to the account in EUR.
   - Parameters: None
   - Request Body:
