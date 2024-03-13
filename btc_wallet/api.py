@@ -1,6 +1,7 @@
 from datetime import datetime
 from uuid import UUID
 
+from django.http import JsonResponse, Http404
 from ninja import NinjaAPI, Schema
 from typing import List
 from django.shortcuts import get_object_or_404
@@ -8,7 +9,9 @@ from .models import Transaction
 from .transferservice import TransferService
 from decimal import Decimal
 
+
 api = NinjaAPI()
+
 
 class TransactionOut(Schema):
     transaction_id: UUID
@@ -22,17 +25,21 @@ class TransactionOut(Schema):
             datetime: lambda v: v.isoformat(),
         }
 
+
 class BalanceOut(Schema):
     balance_btc: Decimal
     balance_eur: Decimal
 
+
 class TransferIn(Schema):
     amount_eur: Decimal
+
 
 @api.get("/transactions", response=List[TransactionOut])
 def list_transactions(request):
     transactions = Transaction.objects.all()
     return transactions
+
 
 @api.get("/balance", response=BalanceOut)
 def show_balance(request):
@@ -42,6 +49,7 @@ def show_balance(request):
     balance_eur = balance_btc * exchange_rate
     return {'balance_btc': balance_btc, 'balance_eur': balance_eur}
 
+
 @api.post("/transfer", response={201: None})
 def create_transfer(request, data: TransferIn):
     try:
@@ -49,3 +57,6 @@ def create_transfer(request, data: TransferIn):
         return 201, "Transfer created successfully."
     except ValueError as e:
         return 400, str(e)
+
+
+

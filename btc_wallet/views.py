@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from django.http import JsonResponse
 
-# Create your views here.
+def notfound_handler(request, exception):
+    """
+    Custom 404 handler to return JSON response for Not Found errors.
+    """
+    return JsonResponse(
+        {
+            "error": "Page not found",
+            "documentation": "https://github.com/Ralf-A/Simplified-Bitcoin-Wallet-API"
+        },
+        status=404
+    )

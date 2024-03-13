@@ -20,5 +20,8 @@ from btc_wallet.api import api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', api.urls)
+    path('api/', api.urls),
 ]
+
+# Set the custom 404 handler
+handler404 = 'btc_wallet.views.notfound_handler'
