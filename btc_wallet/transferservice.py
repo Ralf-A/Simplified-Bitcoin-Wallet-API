@@ -50,3 +50,17 @@ class TransferService:
             Transaction.objects.create(amount=leftover_amount, spent=False)
 
         return "Transfer successful."
+
+
+
+
+    @staticmethod
+    def add_balance(amount_eur):
+        exchange_rate = TransferService.get_btc_exchange_rate()
+        amount_btc = (Decimal(amount_eur) / exchange_rate).quantize(Decimal('.00000001'), rounding=ROUND_DOWN)
+
+        if amount_btc < TransferService.MIN_TRANSFER_AMOUNT_BTC:
+            raise ValueError("The amount to add is too small.")
+
+        Transaction.objects.create(amount=amount_btc, spent=False)
+        return "Funds added successfully."

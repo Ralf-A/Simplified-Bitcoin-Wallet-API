@@ -7,8 +7,7 @@ from typing import List
 from django.shortcuts import get_object_or_404
 from .models import Transaction
 from .transferservice import TransferService
-from decimal import Decimal
-
+from decimal import Decimal, ROUND_DOWN
 
 api = NinjaAPI()
 
@@ -32,6 +31,9 @@ class BalanceOut(Schema):
 
 
 class TransferIn(Schema):
+    amount_eur: Decimal
+
+class AddBalanceIn(Schema):
     amount_eur: Decimal
 
 
@@ -59,4 +61,10 @@ def create_transfer(request, data: TransferIn):
         return 400, str(e)
 
 
-
+@api.post("/add", response={201: None})
+def add_balance_eur(request, data: AddBalanceIn):
+    try:
+        TransferService.add_balance(data.amount_eur)
+        return JsonResponse({"message": "Funds added successfully in BTC."}, status=201)
+    except ValueError as e:
+        return JsonResponse({"error": str(e)}, status=400)
